@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
-    <h1>Index page</h1>
+    <div class="container mt-3">
+        <div class="row">
+            <h4>Forum job4j</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 mt-5 mb-5">
+                <table id="example" class="table table-bordered" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Theme</th>
+                        <th>Created</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="post : ${posts}">
+                        <td th:text="${post.name}">Post description</td>
+                        <td th:text="${post.created.getTime().toLocaleString()}">Post description</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+<div class="container">
+    <a class="m-3" th:href="@{/login.html}">to Login</a>
+    <form class="form-signin" th:action="@{/registration}" method="post" action="#" th:object="${userDto}">
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+            <!--/*@thymesVar id="err" type=""*/-->
+            <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+        </div>
+        <h2 class="form-signin">Registration</h2>
+        <p>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" class="form-control" th:field="*{email}" placeholder="Email" required>
+        </p>
+        <p>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" th:field="*{name}" placeholder="Name" required>
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" th:field="*{password}" placeholder="Password" required>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+</div>
+</body>
+</html>

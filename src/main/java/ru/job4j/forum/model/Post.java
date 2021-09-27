@@ -16,11 +16,11 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column(name = "name")
     private String name;
     @Column(name = "description")
-    private String desc;
+    private String description;
     @Column(name = "created")
     private Calendar created;
 }

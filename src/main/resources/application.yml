@@ -9,3 +9,10 @@ spring:
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    ru.job4j.forum.controller: DEBUG
+    org.hibernate: DEBUG
+    org: INFO

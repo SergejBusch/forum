@@ -8,25 +8,11 @@
 <body>
     <div class="container mt-3">
         <div class="row">
-            <h4>Forum job4j</h4>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 mt-5 mb-5">
-                <table id="example" class="table table-bordered" style="width: 100%">
-                    <thead>
-                    <tr>
-                        <th>Theme</th>
-                        <th>Created</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="post : ${posts}">
-                        <td th:text="${post.name}">Post description</td>
-                        <td th:text="${post.created.getTime().toLocaleString()}">Post description</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <a class="m-3" th:href="@{/posts}"><h1>Posts</h1></a>
+            <div th:if="${#strings.contains(#authentication.getAuthorities(), 'write')}">
+                <a class="m-3" th:href="@{/edit}"><h1>Edit posts</h1></a>
             </div>
+            <a class="m-3" th:href="@{/logout}"><h1>Logout</h1></a>
         </div>
     </div>
 </body>

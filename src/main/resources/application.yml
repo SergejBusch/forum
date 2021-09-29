@@ -3,12 +3,16 @@ spring:
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/forum
-    username: postgres
-    password: postgres
-    driverClassName: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/forum
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+#    username: postgres
+    password: sa
+#    password: postgres
+    driverClassName: org.h2.Driver
+#    driverClassName: org.postgresql.Driver
 
 logging:
   level:

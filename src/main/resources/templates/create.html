@@ -8,7 +8,7 @@
     <title>Create new Post</title>
 </head>
 <body>
-    <form action="#" th:action="@{/posts/new}" th:object="${postDto}" method="post">
+    <form action="#" th:action="@{/post/new}" th:object="${postDto}" method="post">
         <p>
             <label for="name"></label>
             <input type="text" id="name" th:field="*{name}" placeholder="Name" required>

@@ -8,7 +8,7 @@
     <title>Edit</title>
 </head>
 <body>
-    <form action="#" th:action="@{/posts/{id}(id=${postDto.id})}" th:object="${postDto}" method="post">
+    <form action="#" th:object="${postDto}" method="post" th:action="@{/post/{id}(id=${postId})}">
         <p>
             <label for="name">Name</label>
             <input type="text" id="name" th:field="*{name}" placeholder="Name" required>

@@ -21,13 +21,13 @@ public class PostController {
         this.postService = posts;
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/post")
     public String getAllPosts(Model model) {
         model.addAttribute("posts", postService.getAll());
         return "posts";
     }
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/post/{id}")
     public String get(@PathVariable int id, Model model) {
         PostDto postDto = null;
         try {
@@ -36,10 +36,11 @@ public class PostController {
             e.printStackTrace();
         }
         model.addAttribute("postDto", postDto);
+        model.addAttribute("postId", id);
         return "edit";
     }
 
-    @PostMapping("/posts/{id}")
+    @PostMapping("/post/{id}")
     public String update(@PathVariable int id, @Valid PostDto postDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "edit";
@@ -49,21 +50,21 @@ public class PostController {
         } catch (ChangeSetPersister.NotFoundException e) {
             e.printStackTrace();
         }
-        return "redirect:/posts";
+        return "redirect:/post";
     }
 
-    @GetMapping("/posts/new")
+    @GetMapping("/post/new")
     public String createNew(Model model) {
         model.addAttribute("postDto", new PostDto());
         return "create";
     }
 
-    @PostMapping("/posts/new")
+    @PostMapping("/post/new")
     public String save(@Valid PostDto postDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "create";
         }
         postService.save(postDto);
-        return "redirect:/posts";
+        return "redirect:/post";
     }
 }

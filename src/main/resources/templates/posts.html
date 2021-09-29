@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-lg-10 mt-5 mb-5">
             <div class="mb-3" th:if="${#strings.contains(#authentication.getAuthorities(), 'write')}">
-                <a href="#" th:href="@{/posts/new}" th:text="${'Create a new post'}"></a>
+                <a href="#" th:href="@{/post/new}" th:text="${'Create a new post'}"></a>
             </div>
             <table id="example" class="table table-bordered" style="width: 100%">
                 <thead>
@@ -30,7 +30,7 @@
                     <td th:text="${pst.name}">Post description</td>
                     <td th:text="${pst.created.getTime().toLocaleString()}">Post description</td>
                     <div th:if="${#strings.contains(#authentication.getAuthorities(), 'write')}">
-                        <td><a href="#" th:href="@{/posts/{id}(id=${pst.id})}"><button>Edit</button></a></td>
+                        <td><a href="#" th:href="@{/post/{id}(id=${pst.id})}"><button>Edit</button></a></td>
                     </div>
                 </tr>
                 </tbody>

@@ -6,11 +6,8 @@ import ru.job4j.forum.dto.PostDto;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.repository.PostRepository;
 
-import javax.persistence.EntityExistsException;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,21 +33,21 @@ public class PostService {
         return postDto;
     }
 
-    public void update(PostDto postDto) throws ChangeSetPersister.NotFoundException {
+    public long update(PostDto postDto) throws ChangeSetPersister.NotFoundException {
         var post = postRepository.findById(postDto.getId()).orElseThrow(
                 ChangeSetPersister.NotFoundException::new);
-        saveHelper(postDto, post);
+        return saveHelper(postDto, post).getId();
     }
 
-    public void save(PostDto postDto) {
+    public long save(PostDto postDto) {
         var post = new Post();
         post.setCreated(Calendar.getInstance());
-        saveHelper(postDto, post);
+        return saveHelper(postDto, post).getId();
     }
 
-    private void saveHelper(PostDto postDto, Post post) {
+    private Post saveHelper(PostDto postDto, Post post) {
         post.setDescription(postDto.getDescription());
         post.setName(postDto.getName());
-        postRepository.save(post);
+        return postRepository.save(post);
     }
 }

@@ -6,6 +6,8 @@ sudo: false
 
 script: mvn clean package -DskipTests=true
 
+install: true
+
 after_success:
  - bash <(curl -s https://codecov.io/bash)
 
@@ -23,5 +25,5 @@ env:
 deploy:
   provider: heroku
   api_key:
-    secure: "YOUR ENCRYPTED API KEY"
+    secure: YNUmW2kIAFkKw+hRcyRCNyKRZOaMVbshzHOJqbXDQCdq0Un/a+YaBlBTZZT0gfULzNKo7MnTT7bkL0RSI9xGdhCusJMxjFu8D4BmlvikzOHFVyBeSB8LAWb6KHGWTwRXpeXutYCGrv/5dEuAfH6AcoQd9NonRnCgr+/nxkNIdHqhZSUtfHgziPY+XLmlJfP0ru+C/Fin04q1KGj5yaDcbLk5J9qktFxAKHngufDfH0AMwQRH0YmFrgjAyHgCVdebuhiPaCm0EVPL7na5F8bEEKDn9gfFKhpQE3wSlzhvjL6JiRDAtuWnxJxr6V42bLsaUIix4oeMUQwCK25+idQr6UobRlQapNp4P7U3I7pORjH0flKB+SUzlf+JHJc22nEhtVwzte+ajGm6rdiUnBXAt+0m2P72y6j9aMOxwCQw2wP4lrbIB/fL6EiygW9oJgmodMWEqaoCGCH+iYnRT7XkIz5Cp6l3m9AX9IghJx7g2UXJHQ11NrhY4Zhf25VtDkallEV4Lzn8btVYw1kFy/RqC/0iUkt0IyYQ6fRidFS8wvyUjmj1iYMRW6F0hiKKls+zwxGrqdXsWLyD5cPe1UjbPvQAYauByVD6sTTmDSBq6xd8+Yo4QoVZE2upcqJg2PjN4koYx8pli3ipo9C+4gCKpLaqDUal5cQLT3OJuV+TsuU=
   app: mein-forum

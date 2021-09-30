@@ -4,6 +4,8 @@ jdk:
 
 sudo: false
 
+script: mvn clean package -DskipTests=true
+
 after_success:
  - bash <(curl -s https://codecov.io/bash)
 
@@ -16,4 +18,10 @@ notifications:
 
 env:
   global:
-     - CODECOV_TOKEN="eb1befe8-3490-4f29-9624-00ed985def3b"
+     - CODECOV_TOKEN="388fa5d7-d5b9-43da-a189-d90fbd991ff2"
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "YOUR ENCRYPTED API KEY"
+  app: mein-forum

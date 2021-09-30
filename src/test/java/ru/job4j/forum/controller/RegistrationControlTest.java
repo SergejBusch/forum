@@ -15,7 +15,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = ForumApplication.class)
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
 public class RegistrationControlTest {
 
     @Autowired
@@ -23,9 +22,9 @@ public class RegistrationControlTest {
 
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/registration"))
+        this.mockMvc.perform(get("/reg"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("/registration"));
+                .andExpect(view().name("register"));
     }
 }

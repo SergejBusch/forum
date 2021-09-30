@@ -24,9 +24,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
+                .antMatchers("*/register").permitAll()
+                .antMatchers("/reg").permitAll()
                 .antMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
                 .antMatchers("/edit").hasAuthority("write")
                 .antMatchers("/**").hasAnyAuthority("write", "read")
@@ -46,6 +48,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf()
                 .disable();
+        http.requiresChannel()
+                .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                .requiresSecure();
     }
 
     @Bean

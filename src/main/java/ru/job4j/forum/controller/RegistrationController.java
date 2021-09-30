@@ -1,5 +1,6 @@
 package ru.job4j.forum.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +21,11 @@ public class RegistrationController {
         this.service = service;
     }
 
-    @PostMapping(value = "/registration")
+    @PostMapping(value = "/reg")
     public String register(@Valid UserDto userDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("registrationForm", userDto);
-            return "registration";
+            return "register";
         }
 
         try {
@@ -33,14 +34,14 @@ public class RegistrationController {
             bindingResult.rejectValue("email", "userDto.email",
                     "An account already exists for this email.");
             model.addAttribute("registrationForm", userDto);
-            return "registration";
+            return "register";
         }
         return "redirect:/login";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/reg")
     public String register(final Model model) {
         model.addAttribute("userDto", new UserDto());
-        return "/registration";
+        return "register";
     }
 }

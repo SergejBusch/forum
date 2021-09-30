@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,7 @@
 <body>
 <div class="container">
     <a class="m-3" th:href="@{/login.html}">to Login</a>
-    <form class="form-signin" th:action="@{/registration}" method="post" action="#" th:object="${userDto}">
+    <form class="form-signin" th:action="@{/reg}" method="post" action="#" th:object="${userDto}">
         <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
             <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
         </div>

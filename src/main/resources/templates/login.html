@@ -1,4 +1,4 @@
-<html lang="en">
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container">
-    <a class="m-3" th:href="@{/registration}"> to Registration</a>
+    <a class="m-3" th:href="@{/reg}"> to Registration</a>
     <div th:if= "${errorMessage != null}">
         <div style="color:red; font-weight: bold; margin: 30px 0px;">
             <div th:text="${errorMessage}"></div>
